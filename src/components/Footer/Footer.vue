@@ -49,15 +49,14 @@
 
 <style lang='less' rel="stylesheet/less" scoped>
 @import "../../assets/less/mixins";
-body{
-  position: relative;
+
   .footer_group{
     .top-border-1px(#eee);
     display:flex;
     width: 100%;
     height:98/@rem ;
     background-color: #FAFAFA;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -82,5 +81,5 @@ body{
       }
     }
   }
-}
+
 </style>
