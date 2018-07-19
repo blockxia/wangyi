@@ -10,7 +10,7 @@
       <!--继续使用触屏版浏览>-->
       <!--<div>下载APP 立即领取</div>-->
      <!-- <img src="./images/bottom.jpg" alt="">-->
-      <router-link to="/msite" replace >
+      <router-link to="/msite" push >
         <div class="first_bottom"> </div>
       </router-link>
 
@@ -24,7 +24,7 @@
 </script>
 
 <style lang='less' rel="stylesheet/less">
-  @rem:750/16rem;
+  @import "../../assets/less/mixins";
 body{
   background: #efeeec;
   .first_wrap{
