@@ -1,19 +1,23 @@
 <template>
   <div id="app">
-    <router-view/>
+    <!--<HeaderTop/>-->
     <Footer v-show="$route.meta.showFooter"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
  import Footer from './components/Footer/Footer.vue'
+ import HeaderTop from './components/HeaderTop/HeaderTop.vue'
+
   export default {
     components:{
-      Footer
+      Footer,
+      HeaderTop
     }
 }
 </script>
 
-<style>
+<style lang='less' rel="stylesheet/less" scoped="true">
 
 </style>

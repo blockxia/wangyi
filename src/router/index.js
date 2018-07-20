@@ -25,19 +25,23 @@ export default new Router({
       },
       children:[
         {
-          path: '/recommend',
+          path: '/msite/recommend',
           component:Recommend,
           meta:{
             showFooter:true
           }
         },
         {
-          path: '/athome',
+          path: '/msite/athome',
           component:AtHome,
           meta:{
             showFooter:true
           }
         },
+        {
+          path: '',
+          redirect: '/msite/recommend'
+        }
       ]
     },
     {
@@ -64,9 +68,9 @@ export default new Router({
     {
       path: '/profile',
       component:Profile,
-      meta:{
+      /*meta:{
         showFooter:true
-      }
+      }*/
     },
 
 

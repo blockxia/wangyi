@@ -40,6 +40,10 @@
           this.$router.replace(path)
       },
       isShow(path){
+
+        if(this.$route.path==='/msite/recommend' || this.$route.path=== '/msite/athome'){
+          return this.$route.path.slice(0,6) === path
+        }
         return this.$route.path===path
       }
 
@@ -60,7 +64,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-
+    z-index: 999;
      & .iconfont{
       font-size: 22px;
      }
