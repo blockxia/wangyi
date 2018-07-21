@@ -161,7 +161,7 @@
       </div>
       <div class="jujiahaowu_content">
         <ul class="jujiahaowu_content_inner">
-          <li v-if="index<8" v-for="(cate,index) in cateList">
+          <li v-if="index<6" v-for="(cate,index) in cateList">
             <img :src="cate.itemList[0].listPicUrl" alt="">
             <div class="ul-item li_inner">{{cate.itemList[0].simpleDesc}}</div>
             <div class="ul-item li_info">{{cate.itemList[0].name}}</div>
@@ -238,6 +238,7 @@
 <style lang='less' rel="stylesheet/less" scoped>
   @import "../../assets/less/mixins";
   .msite_content{
+    overflow: hidden;
     background: #eee;
     margin-top:148/@rem ;
     margin-bottom: 200px;
@@ -537,7 +538,7 @@
           }
         }
         .predict_time{
-          font-size: 16px;
+          font-size: 14px;
           color: #333;
         }
       }
@@ -670,6 +671,7 @@
 
       }
       .jujiahaowu_content{
+
         .jujiahaowu_content_inner{
           &>li{
             width: 375/@rem;
