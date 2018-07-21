@@ -1,8 +1,6 @@
 <template>
 
-    <router-link to="/class">
-      class
-    </router-link>
+
 
 </template>
 
