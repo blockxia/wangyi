@@ -1,3 +1,11 @@
 export default {
-  headCateList:[]
+  headCateList:[],//头部分类
+  focusList:[],//轮播图
+  policyDescList:[],//描述分类
+  tagList:[],//ck制造商
+  newItemList:[],//新品首发
+  popularItemList: [],   //人气推荐
+  flashSaleIndexVO:{},//严选限时购
+  topicList:[],//专题精选
+  cateList:[]//居家好物
 }

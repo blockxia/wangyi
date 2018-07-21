@@ -46,9 +46,9 @@
       }
     },
     mounted(){
-      this.$store.dispatch('getHeadCateList',()=>{
+     /* this.$store.dispatch('getHeadCateList',()=>{
         this.$nextTick(()=>{
-         /* new BScroll('.inner',{
+         /!* new BScroll('.inner',{
             scrollX:true,
             eventPassthrough:'vertical'
           })
@@ -68,9 +68,12 @@
               el: '.swiper-pagination',
             },
           })
-*/
+*!/
         })
-      });
+      });*/
+      this.$store.dispatch('getFocusList')
+      this.$store.dispatch('getPolicyDescList')
+      this.$store.dispatch('getTagList')
 
 
     },

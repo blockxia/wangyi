@@ -2,10 +2,11 @@
   <div class="msite_content">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="./images/01.jpg" alt="">
+        <div class="swiper-slide" v-for="(item,index) in focusList"
+        :key="index">
+          <img :src="item.picUrl" alt="">
         </div>
-        <div class="swiper-slide">
+      <!--  <div class="swiper-slide">
           <img src="./images/02.jpg" alt="">
         </div>
         <div class="swiper-slide">
@@ -16,24 +17,15 @@
         </div>
         <div class="swiper-slide">
           <img src="./images/05.jpg" alt="">
-        </div>
+        </div>-->
       </div>
       <div class="swiper-pagination"></div>
     </div>
     <div class="tip">
-      <div>
+      <div v-for="(desc,index) in policyDescList" :key="index">
         <i class="iconfont icon-duigou-copy"></i>
-        <span>网易自营品牌</span>
+        <span>{{desc.desc}}</span>
       </div>
-      <div>
-        <i class="iconfont icon-duigou-copy"></i>
-        <span>30天无忧退货</span>
-      </div>
-      <div>
-        <i class="iconfont icon-duigou-copy"></i>
-        <span>48小时快速退款</span>
-      </div>
-
     </div>
     <div class="shop_pinpai">
 
@@ -41,33 +33,12 @@
         <span>品牌制造商直供<i class="iconfont icon-shouqijiantouxiao-copy"></i></span>
       </div>
       <ul class="pinpai_group">
-        <li class="item">
+        <li class="item" v-for="(tag,index) in tagList" :key="index" v-if="index<4">
           <div class="item_text">
-            <h6>CK制造商</h6>
-            <span>25元起</span>
+            <h6>{{tag.name}}</h6>
+            <span>{{tag.floorPrice}}元起</span>
           </div>
-          <img src="./images/01.png" alt="">
-        </li>
-        <li class="item">
-          <div class="item_text">
-            <h6>CK制造商</h6>
-            <span>25元起</span>
-          </div>
-          <img src="./images/02.png" alt="">
-        </li>
-        <li class="item">
-          <div class="item_text">
-            <h6>CK制造商</h6>
-            <span>25元起</span>
-          </div>
-          <img src="./images/03.png" alt="">
-        </li>
-        <li class="item">
-          <div class="item_text">
-            <h6>CK制造商</h6>
-            <span>25元起</span>
-          </div>
-          <img src="./images/04.png" alt="">
+          <img :src="tag.picUrl" alt="">
         </li>
       </ul>
 
@@ -84,79 +55,20 @@
       </div>
       <div class="new_slide">
         <div class="inner">
-          <ul class="new_wrapper">
-            <li class="item_slide">
-              <img src="./images/new/edac0706ab1052cb47e34c591c568a3b.png" alt="">
+          <ul class="new_wrapper" >
+            <li class="item_slide" v-for="(newItem,index) in newItemList">
+              <img :src="newItem.listPicUrl" alt="">
               <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
+                <span>{{newItem.name}}</span>
               </div>
               <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
+                <span>{{newItem.simpleDesc}}</span>
               </div>
               <div class="item_slide_pay">
-                <span>￥499</span>
+                <span>￥{{newItem.retailPrice}}</span>
               </div>
             </li>
-            <li class="item_slide">
-              <img src="./images/new/3840a25ae5b6a35b7e604bd379ec3bd0.png" alt="">
-              <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_pay">
-                <span>￥499</span>
-              </div>
-            </li>
-            <li class="item_slide">
-              <img src="./images/new/e0fcd63d29618685f2690e4e47719b4e.png" alt="">
-              <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_pay">
-                <span>￥499</span>
-              </div>
-            </li>
-            <li class="item_slide">
-              <img src="./images/new/3840a25ae5b6a35b7e604bd379ec3bd0.png" alt="">
-              <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_pay">
-                <span>￥499</span>
-              </div>
-            </li>
-            <li class="item_slide">
-              <img src="./images/new/eb87709f92843bd6eddf9cb7a2b01688.png" alt="">
-              <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_pay">
-                <span>￥499</span>
-              </div>
-            </li>
-            <li class="item_slide">
-              <img src="./images/new/e0fcd63d29618685f2690e4e47719b4e.png" alt="">
-              <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_pay">
-                <span>￥499</span>
-              </div>
-            </li>
+
           </ul>
         </div>
       </div>
@@ -174,76 +86,16 @@
       <div class="new_slide">
         <div class="hot_inner">
           <ul class="new_wrapper">
-            <li class="item_slide">
-              <img src="./images/new/edac0706ab1052cb47e34c591c568a3b.png" alt="">
+            <li class="item_slide" v-for="(popularItem,index) in popularItemList" :key="index">
+              <img :src="popularItem.listPicUrl" alt="">
               <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
+                <span>{{popularItem.name}}</span>
               </div>
               <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
+                <span>{{popularItem.simpleDesc}}</span>
               </div>
               <div class="item_slide_pay">
-                <span>￥499</span>
-              </div>
-            </li>
-            <li class="item_slide">
-              <img src="./images/new/3840a25ae5b6a35b7e604bd379ec3bd0.png" alt="">
-              <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_pay">
-                <span>￥499</span>
-              </div>
-            </li>
-            <li class="item_slide">
-              <img src="./images/new/e0fcd63d29618685f2690e4e47719b4e.png" alt="">
-              <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_pay">
-                <span>￥499</span>
-              </div>
-            </li>
-            <li class="item_slide">
-              <img src="./images/new/3840a25ae5b6a35b7e604bd379ec3bd0.png" alt="">
-              <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_pay">
-                <span>￥499</span>
-              </div>
-            </li>
-            <li class="item_slide">
-              <img src="./images/new/eb87709f92843bd6eddf9cb7a2b01688.png" alt="">
-              <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_pay">
-                <span>￥499</span>
-              </div>
-            </li>
-            <li class="item_slide">
-              <img src="./images/new/e0fcd63d29618685f2690e4e47719b4e.png" alt="">
-              <div class="item_slide_fold">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_small">
-                <span>创新可逆模式 空气对流循环</span>
-              </div>
-              <div class="item_slide_pay">
-                <span>￥499</span>
+                <span>￥{{popularItem.retailPrice}}</span>
               </div>
             </li>
           </ul>
@@ -256,25 +108,25 @@
           <span>严选限时购</span>
         </div>
         <div class=" Countdown_time">
-          <span class="hour">01</span>
+          <span class="hour">10</span>
           <span class="black">:</span>
           <span class="min">01</span>
           <span class="black">:</span>
-          <span class="second">01</span>
+          <span class="second">45</span>
         </div>
         <div class="predict_time">
           <span class="up_time">下一场</span>
-          <span class="predict_time_center">10:00</span>
+          <span class="predict_time_center">{{flashSaleIndexVO.nextStartTime |date-format}}</span>
           <span class="begin_time">开始</span>
         </div>
       </div>
       <div class=" xianshishop_item right">
         <div class="right_img">
-          <img src="./images/shafa.png" alt="">
+          <img :src="flashSaleIndexVO.primaryPicUrl" alt="">
         </div>
         <div class="circle">
-          <div class="new">￥9999</div>
-          <div class="old">￥11999</div>
+          <div class="new">￥{{flashSaleIndexVO.activityPrice}}</div>
+          <div class="old">￥{{flashSaleIndexVO.originPrice}}</div>
         </div>
       </div>
     </div>
@@ -292,21 +144,12 @@
       </div>
       <div class="bottom_wrapper">
         <ul class="bottom_slide">
-          <li>
-            <img src="./images/shuiguo.jpg" alt="">
-            <h4>青汁兑蜂蜜, 轻盈又甜蜜</h4>
-
-            <div class="small">每天来杯青汁蜂蜜水，给生活添一点甜蜜</div>
-            <span>129元起</span>
+          <li v-for="(topic,index) in topicList" :key="index" v-if="index<2">
+            <img :src="topic.itemPicUrl" alt="">
+            <h4>{{topic.title}}</h4>
+            <div class="small">{{topic.subtitle}}</div>
+            <span>{{topic.priceInfo}}元起</span>
           </li>
-          <li>
-            <img src="./images/xinglixiang.jpg" alt="">
-            <h4>青汁兑蜂蜜, 轻盈又甜蜜</h4>
-
-            <div class="small">每天来杯青汁蜂蜜水，给生活添一点甜蜜</div>
-            <span>129元起</span>
-          </li>
-
         </ul>
       </div>
     </div>
@@ -318,53 +161,11 @@
       </div>
       <div class="jujiahaowu_content">
         <ul class="jujiahaowu_content_inner">
-          <li>
-            <img src="./images/mianbei.jpg" alt="">
-            <div class="ul-item li_inner">透气吸汗麻+亲肤柔软棉</div>
-            <div class="ul-item li_info">自然棉麻四件套</div>
-            <div class="ul-item li_price">￥599</div>
-          </li>
-          <li>
-            <img src="./images/mianbei.jpg" alt="">
-            <div class="ul-item li_inner">透气吸汗麻+亲肤柔软棉</div>
-            <div class="ul-item li_info">自然棉麻四件套</div>
-            <div class="ul-item li_price">￥599</div>
-          </li>
-          <li>
-            <img src="./images/mianbei.jpg" alt="">
-            <div class="ul-item li_inner">透气吸汗麻+亲肤柔软棉</div>
-            <div class="ul-item li_info">自然棉麻四件套</div>
-            <div class="ul-item li_price">￥599</div>
-          </li>
-          <li>
-            <img src="./images/mianbei.jpg" alt="">
-            <div class="ul-item li_inner">透气吸汗麻+亲肤柔软棉</div>
-            <div class="ul-item li_info">自然棉麻四件套</div>
-            <div class="ul-item li_price">￥599</div>
-          </li>
-          <li>
-            <img src="./images/mianbei.jpg" alt="">
-            <div class="ul-item li_inner">透气吸汗麻+亲肤柔软棉</div>
-            <div class="ul-item li_info">自然棉麻四件套</div>
-            <div class="ul-item li_price">￥599</div>
-          </li>
-          <li>
-            <img src="./images/mianbei.jpg" alt="">
-            <div class="ul-item li_inner">透气吸汗麻+亲肤柔软棉</div>
-            <div class="ul-item li_info">自然棉麻四件套</div>
-            <div class="ul-item li_price">￥599</div>
-          </li>
-          <li>
-            <img src="./images/mianbei.jpg" alt="">
-            <div class="ul-item li_inner">透气吸汗麻+亲肤柔软棉</div>
-            <div class="ul-item li_info">自然棉麻四件套</div>
-            <div class="ul-item li_price">￥599</div>
-          </li>
-          <li>
-            <img src="./images/mianbei.jpg" alt="">
-            <div class="ul-item li_inner">透气吸汗麻+亲肤柔软棉</div>
-            <div class="ul-item li_info">自然棉麻四件套</div>
-            <div class="ul-item li_price">￥599</div>
+          <li v-if="index<8" v-for="(cate,index) in cateList">
+            <img :src="cate.itemList[0].listPicUrl" alt="">
+            <div class="ul-item li_inner">{{cate.itemList[0].simpleDesc}}</div>
+            <div class="ul-item li_info">{{cate.itemList[0].name}}</div>
+            <div class="ul-item li_price">￥{{cate.itemList[0].retailPrice}}</div>
           </li>
         </ul>
       </div>
@@ -374,10 +175,23 @@
 </template>
 
 <script>
+  import {mapState,mapActions} from 'vuex'
   import BScroll from 'better-scroll'
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
   export default {
+    computed:{
+      ...mapState([
+        'focusList',
+        'policyDescList',
+        'tagList',
+        'newItemList',
+        'popularItemList',
+        'flashSaleIndexVO',
+        'topicList',
+        'cateList'
+      ])
+    },
     mounted(){
       this.$store.dispatch('getHeadCateList',()=>{
         this.$nextTick(()=>{
@@ -404,17 +218,20 @@
 
         })
       });
+      this.$store.dispatch('getNewItemList')
+      this.$store.dispatch('getPopularItemLists')
+      //this.$store.dispatch('getFlashSaleIndexVO')
 
+
+      this.getFlashSaleIndexVO()
+      this.getTopicList()
+      this.getCateList()
 
     },
-//    methods:{
-//      goIn(path){
-//        this.$router.push(path)
-//      },
-//      isRed(path){
-//        return this.$route.path===path
-//      }
-//    },
+    methods:{
+      //映射函数多次复用较简单
+      ...mapActions(['getFlashSaleIndexVO','getTopicList','getCateList'])
+    }
   }
 </script>
 
@@ -871,6 +688,9 @@
               margin-left: 8px;
             }
             .li_inner{
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
               color: #9F8A60;
               font-size: 10px;
               width:345/@rem;
