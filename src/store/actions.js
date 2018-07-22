@@ -11,7 +11,8 @@ import {
   RECEIVE_BANNER,
   RECEIVE_COLUMN,
   RECEIVE_RECOMMEND,
-  RECEIVE_TENFIFTEENS
+  RECEIVE_TENFIFTEENS,
+  RECEIVE_CATEGORYS
 } from './mutation-types'
 import {
   reqMsite,
@@ -26,7 +27,8 @@ import {
   reqRealB,
   reqRealC,
   reqRealR,
-  reqRealS
+  reqRealS,
+  reqCategoryData
 } from '../api'
 export default {
 
@@ -133,20 +135,30 @@ export default {
   },
   async getRecommend ({commit}) {
     const result = await reqRealR()
-    console.log('getRecommend',result);
+    //console.log('getRecommend',result);
     if (result.code === 0) {
       const recommend = result.data
-     console.log('getRecommend');
+     //console.log('getRecommend');
       commit(RECEIVE_RECOMMEND, {recommend})
     }
   },
   async getTenfifteens ({commit}) {
     const result = await reqRealS()
-    console.log('getTenfifteens',result);
+    //console.log('getTenfifteens',result);
     if (result.code === 0) {
       const tenfifteens = result.data
-     console.log('getTenfifteens');
+    // console.log('getTenfifteens');
       commit(RECEIVE_TENFIFTEENS, {tenfifteens})
+    }
+  },
+  async getCategorys ({commit},cb) {
+    const result = await reqCategoryData()
+    console.log('getCategorys',result);
+    if (result.code === 0) {
+      const categorys = result.data
+      console.log('getCategorys');
+      commit(RECEIVE_CATEGORYS, {categorys})
+      cb && cb()
     }
   },
 

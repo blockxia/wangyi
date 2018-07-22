@@ -23,3 +23,6 @@ export const reqRealB=()=>ajax('/banner')
 export const reqRealC=()=>ajax('/column')
 export const reqRealS=()=>ajax('/tenfifteen')
 export const reqRealR=()=>ajax('/recommend')
+
+//分类页面数据
+export const reqCategoryData=()=>ajax('/categoryData')

@@ -40,7 +40,7 @@
           this.$router.replace(path)
       },
       isShow(path){
-
+//||this.$route.path==='/class/cate'
         if(this.$route.path==='/msite/recommend' || this.$route.path=== '/msite/athome'){
           return this.$route.path.slice(0,6) === path
         }

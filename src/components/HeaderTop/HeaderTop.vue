@@ -13,7 +13,7 @@
       <div class="nav_wrapper">
         <ul class="slide_nav">
           <li class="slide_item" @click="goIn({path:'/msite/recommend',index})" :class="{active:$route.path ==='/msite/recommend' }">推荐</li>
-          <li class="slide_item" @click="goIn({path:'/msite/athome',index})" :class="{active:activeIndex === index}"
+          <li class="slide_item" @click="goIn({path:'/msite/athome',index})" :class="{active: index===activeIndex }"
             v-for="(headCate,index) in headCateList" :key="index"
           >{{headCate.name}}</li>
         <!--  <li class="slide_item">鞋包配饰</li>
@@ -44,10 +44,14 @@
       ...mapState(['headCateList'])
     },
     mounted(){
-      new BScroll('.nav_wrapper',{
-        scrollX:true,
-        eventPassthrough:'vertical'
-      })
+     this.$nextTick(()=>{
+       new BScroll('.nav_wrapper',{
+         probeType: 2,
+         scrollX:true,
+         click: true,
+         eventPassthrough:'vertical'
+       })
+     })
     },
     methods:{
       goIn(obj){

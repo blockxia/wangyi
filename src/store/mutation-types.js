@@ -12,3 +12,4 @@ export const RECEIVE_BANNER='receive_banner'//接收实物banner
 export const RECEIVE_COLUMN='receive_column'//接收实物banner下面的channel
 export const RECEIVE_RECOMMEND='receive_recommend'//接收为你推荐
 export const RECEIVE_TENFIFTEENS='receive_tenfifteens'//接收十点一刻
+export const RECEIVE_CATEGORYS='receive_categorys'//接收分类页数据

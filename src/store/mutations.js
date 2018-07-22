@@ -11,7 +11,9 @@ import {
   RECEIVE_COLUMN,
   RECEIVE_BANNER,
   RECEIVE_RECOMMEND,
-  RECEIVE_TENFIFTEENS
+  RECEIVE_TENFIFTEENS,
+  RECEIVE_CATEGORYS,
+
 } from './mutation-types'
 
 export default {
@@ -55,5 +57,9 @@ export default {
   ,
   [RECEIVE_TENFIFTEENS](state,{tenfifteens}){
     state.tenfifteens=tenfifteens
+  }
+  ,
+  [RECEIVE_CATEGORYS](state,{categorys}){
+    state.categorys=categorys
   }
 }

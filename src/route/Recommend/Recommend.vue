@@ -4,7 +4,7 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="(item,index) in focusList"
         :key="index">
-          <img v-lazy="item.picUrl" alt="">
+          <img :src="item.picUrl" alt="">
         </div>
       <!--  <div class="swiper-slide">
           <img src="./images/02.jpg" alt="">
@@ -87,7 +87,7 @@
         <div class="hot_inner">
           <ul class="new_wrapper">
             <li class="item_slide" v-for="(popularItem,index) in popularItemList" :key="index">
-              <img v-lazy="popularItem.listPicUrl" alt="">
+              <img :src="popularItem.listPicUrl" alt="">
               <div class="item_slide_fold">
                 <span>{{popularItem.name}}</span>
               </div>
@@ -122,7 +122,7 @@
       </div>
       <div class=" xianshishop_item right">
         <div class="right_img">
-          <img v-lazy="flashSaleIndexVO.primaryPicUrl" alt="">
+          <img :src="flashSaleIndexVO.primaryPicUrl" alt="">
         </div>
         <div class="circle">
           <div class="new">￥{{flashSaleIndexVO.activityPrice}}</div>
@@ -211,6 +211,7 @@
             autoplay:true,
             loop:true,
             // 如果需要分页器
+            initialSilde:0,
             pagination: {
               el: '.swiper-pagination',
             },
@@ -436,7 +437,7 @@
           margin: auto;
           color: #bbb;
           .shoufa{
-            font-size: 18px;
+            font-size: 20px;
             text-align: center;
             margin-bottom: 10px;
           }

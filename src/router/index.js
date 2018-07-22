@@ -8,6 +8,9 @@ import Shopping from '../route/Shopping/Shopping.vue'
 import Profile from '../route/Profile/Profile.vue'
 import Recommend from '../route/Recommend/Recommend.vue'
 import AtHome from '../route/AtHome/AtHome.vue'
+//import Cate from '../route/Cate/Cate.vue'
+import Login from '../route/Login/Login.vue'
+import Register from '../route/Register/Register.vue'
 
 Vue.use(Router)
 
@@ -56,7 +59,16 @@ export default new Router({
       component:Class,
       meta:{
         showFooter:true
-      }
+      },
+      // children:[
+      //   {
+      //     path: '/class/cate',
+      //     component:Cate,
+      //     meta:{
+      //       showFooter:true
+      //     }
+      //   }
+      // ]
     },
     {
       path: '/shopping',
@@ -64,6 +76,14 @@ export default new Router({
       meta:{
         showFooter:true
       }
+    },
+    {
+      path: '/login',
+      component:Login,
+    },
+    {
+      path: '/register',
+      component:Register,
     },
     {
       path: '/profile',

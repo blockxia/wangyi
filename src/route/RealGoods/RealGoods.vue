@@ -54,29 +54,30 @@
     <!--为你推荐-->
     <div class="foryou_tuijian">
       <div class="first">
-        <div class="up">
+        <div class="up" v-if="recommend.recommendBanner">
           <div class="inner_header">
             <div class="up_title">
               为你推荐
             </div>
           </div>
-          <div class="content">
+          <div class="content" v-if="recommend.recommendBanner" :style="{backgroundImage:'url('+recommend.recommendBanner.picUrl+')'}">
             <div class="tip" >
               {{recommend.recommendBanner.nickname}}
             </div>
           </div>
           <div class="footerinfo">
             <div class="footer_title">
-              <div class="footer_left">选择一种风格，选择一种人生</div>
+              <div class="footer_left" v-if="recommend.recommendBanner">{{recommend.recommendBanner.title}}</div>
               <div class="footer_right">
-                <span class="num">9.6</span>
+                <span class="num" v-if="recommend.recommendBanner">{{recommend.recommendBanner.priceInfo
+                  }}</span>
                 <span class="qi">元起</span>
               </div>
             </div>
-            <div class="footer_info">ins风、北欧风、复古风等数十款好物限时特价</div>
+            <div class="footer_info">{{recommend.recommendBanner.subtitle}}</div>
           </div>
         </div>
-        <div class="first_down">
+        <div class="first_down" v-if="recommend.recommends">
           <div class="left">
             <div class="left_avatar">
               <div class="left_avatar_img">
@@ -84,10 +85,10 @@
               </div>
               <div class="left_avatar_name">{{recommend.recommends[0].nickname}}</div>
             </div>
-            <div class="left_title">{{recommend.recommends[0].subtitle}}</div>
-            <div class="left_price">云萃龙井茶饮料限时{{recommend.recommends[0].priceInfo}}元一箱</div>
+            <div class="left_title">{{recommend.recommends[0].title}}</div>
+            <div class="left_price">{{recommend.recommends[0].subtitle}}</div>
           </div>
-          <div class="right">
+          <div class="right" :style="{backgroundImage: 'url('+recommend.recommends[0].picUrl+')'}">
             <div class="right_title" v-if="recommend.recommends ? recommend.recommends[0].typeName : null">
               {{recommend.recommends[0].typeName}}
             </div>

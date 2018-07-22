@@ -4,6 +4,7 @@
 import Mock from 'mockjs'
 import data from './msite.json'
 import shiwuData from './shiwu.json'
+import categoryData from './category.json'
 //主页面数据
 Mock.mock('/headCateList',{code:0,data:data.headCateList})
 Mock.mock('/focusList',{code:0,data:data.focusList})
@@ -21,3 +22,4 @@ Mock.mock('/banner',{code:0,data:shiwuData.banner})
 Mock.mock('/column',{code:0,data:shiwuData.column})
 Mock.mock('/recommend',{code:0,data:shiwuData.recommend})
 Mock.mock('/tenfifteen',{code:0,data:shiwuData.tenfifteen})
+Mock.mock('/categoryData',{code:0,data:categoryData})

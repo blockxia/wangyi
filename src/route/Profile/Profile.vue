@@ -24,13 +24,13 @@
         <div class="btn_wrap">
           <div class="btn_phone" @click="$router.replace('/login')">
             <i class="iconfont icon-shouji4"></i>
-            <span>手机号码注册</span>
+            <span>手机号码登录</span>
           </div>
           <div class="btn_emil" @click="$router.replace('/login')">
             <i class="iconfont icon-youxiang"></i>
-            <span>邮箱账号注册</span>
+            <span>邮箱账号登录</span>
           </div>
-          <div class="text_register" @click="$router.replace('/login')">
+          <div class="text_register" @click="$router.replace('/register')">
             <span>手机号快捷注册</span>
             <i class="iconfont icon-jiantouyou"></i>
           </div>
