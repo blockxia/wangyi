@@ -12,7 +12,7 @@
       </div>
       <div class="nav_wrapper">
         <ul class="slide_nav">
-          <li class="slide_item" @click="goIn({path:'/msite/recommend',index})" :class="{active:$route.path =='/msite/recommend' }">推荐</li>
+          <li class="slide_item" @click="goIn({path:'/msite/recommend',index})" :class="{active:$route.path ==='/msite/recommend' }">推荐</li>
           <li class="slide_item" @click="goIn({path:'/msite/athome',index})" :class="{active:activeIndex === index}"
             v-for="(headCate,index) in headCateList" :key="index"
           >{{headCate.name}}</li>
@@ -54,9 +54,6 @@
         const {path,index}=obj
         this.$router.push(path)
         this.activeIndex =index
-      },
-      isRed(path){
-        return this.$route.path===path
       }
     },
   }

@@ -7,7 +7,11 @@ import {
   RECEIVE_POPULARITEMLISTS,
   RECEIVE_FLASHSALEINDEXVO,
   RECEIVE_TOPICLIST,
-  RECEIVE_CATELIST
+  RECEIVE_CATELIST,
+  RECEIVE_COLUMN,
+  RECEIVE_BANNER,
+  RECEIVE_RECOMMEND,
+  RECEIVE_TENFIFTEENS
 } from './mutation-types'
 
 export default {
@@ -37,5 +41,19 @@ export default {
   },
   [RECEIVE_CATELIST](state,{cateList}){
     state.cateList=cateList
+  },
+  [RECEIVE_BANNER](state,{banners}){
+    state.banners=banners
+  },
+  [RECEIVE_COLUMN](state,{columns}){
+    state.columns=columns
+  }
+  ,
+  [RECEIVE_RECOMMEND](state,{recommend}){
+    state.recommend=recommend
+  }
+  ,
+  [RECEIVE_TENFIFTEENS](state,{tenfifteens}){
+    state.tenfifteens=tenfifteens
   }
 }

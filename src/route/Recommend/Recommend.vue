@@ -4,7 +4,7 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="(item,index) in focusList"
         :key="index">
-          <img :src="item.picUrl" alt="">
+          <img v-lazy="item.picUrl" alt="">
         </div>
       <!--  <div class="swiper-slide">
           <img src="./images/02.jpg" alt="">
@@ -38,7 +38,7 @@
             <h6>{{tag.name}}</h6>
             <span>{{tag.floorPrice}}元起</span>
           </div>
-          <img :src="tag.picUrl" alt="">
+          <img v-lazy="tag.picUrl" alt="">
         </li>
       </ul>
 
@@ -57,7 +57,7 @@
         <div class="inner">
           <ul class="new_wrapper" >
             <li class="item_slide" v-for="(newItem,index) in newItemList">
-              <img :src="newItem.listPicUrl" alt="">
+              <img v-lazy="newItem.listPicUrl" alt="">
               <div class="item_slide_fold">
                 <span>{{newItem.name}}</span>
               </div>
@@ -87,7 +87,7 @@
         <div class="hot_inner">
           <ul class="new_wrapper">
             <li class="item_slide" v-for="(popularItem,index) in popularItemList" :key="index">
-              <img :src="popularItem.listPicUrl" alt="">
+              <img v-lazy="popularItem.listPicUrl" alt="">
               <div class="item_slide_fold">
                 <span>{{popularItem.name}}</span>
               </div>
@@ -122,7 +122,7 @@
       </div>
       <div class=" xianshishop_item right">
         <div class="right_img">
-          <img :src="flashSaleIndexVO.primaryPicUrl" alt="">
+          <img v-lazy="flashSaleIndexVO.primaryPicUrl" alt="">
         </div>
         <div class="circle">
           <div class="new">￥{{flashSaleIndexVO.activityPrice}}</div>
@@ -436,7 +436,7 @@
           margin: auto;
           color: #bbb;
           .shoufa{
-            font-size: 20px;
+            font-size: 18px;
             text-align: center;
             margin-bottom: 10px;
           }

@@ -12,7 +12,8 @@
   <div class="bottom">
     <div class="nav">
       <ul class="nav_list">
-        <li class="nav_list_li on" v-for="item in 13">推荐专区</li>
+        <li class="nav_list_li " :class="{on:currentIndex===index}"  v-for="(item,index) in 13" :key="index"
+            @click="goCate({path:'/class/cate',index})">推荐专区</li>
       </ul>
     </div>
     <div class="list">
@@ -25,7 +26,7 @@
        </div>
        <div class="list_img">
          <ul class="list_img_ul">
-           <li v-for="item in 14">
+           <li v-for="item in 5">
              <img src="http://yanxuan.nosdn.127.net/41384c389e80d6437324616e346f3294.png?imageView&quality=85&thumbnail=144x144" alt="">
              <div class="img_name">夏凉床品</div>
            </li>
@@ -42,6 +43,11 @@
   import BScroll from  'better-scroll'
 
   export default {
+    data(){
+      return{
+        currentIndex:0
+      }
+    },
     mounted(){
       this.$nextTick(()=>{
         new BScroll('.nav',{
@@ -53,6 +59,13 @@
 
         })
       })
+    },
+    methods:{
+      goCate(obj){
+        const {path,index}=obj
+        this.$router.push(path)
+        this.currentIndex=index
+      }
     }
   }
 </script>

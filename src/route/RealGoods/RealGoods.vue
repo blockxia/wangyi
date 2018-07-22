@@ -16,8 +16,13 @@
     </div>
     <div class="swiper0">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="./images/1.jpg" alt="">
+        <div class="swiper-slide" v-for="(banner,index) in banners" :key="index">
+          <img v-lazy="banner.picUrl" alt="">
+          <div class="swiper0_gray_inner">
+            <div class="jinri">--{{banner.subTitle}}--</div>
+            <div class="guanyu">{{banner.title}}</div>
+            <div class="liaoliao">{{banner.desc}}</div>
+          </div>
         </div>
         <div class="swiper-slide">
           <img src="./images/2.jpg" alt="">
@@ -36,24 +41,12 @@
     <div class="small">
       <div class="swiper-container swiper1">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" >
-            <img src="./images/1.jpg" alt="">
+          <div class="swiper-slide" v-for="(column,index) in columns" :key="index" v-if="index<8">
+            <img v-lazy="column.picUrl" alt="">
             <div class="small_tip">
-              328篇文章
+              {{column.articleCount}}
             </div>
-            <div class="title">严选好物</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/2.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/3.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/4.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/6.jpg" alt="">
+            <div class="title">{{column.title}}</div>
           </div>
         </div>
       </div>
@@ -68,8 +61,8 @@
             </div>
           </div>
           <div class="content">
-            <div class="tip">
-              严选推荐
+            <div class="tip" >
+              {{recommend.recommendBanner.nickname}}
             </div>
           </div>
           <div class="footerinfo">
@@ -87,16 +80,16 @@
           <div class="left">
             <div class="left_avatar">
               <div class="left_avatar_img">
-                <img src="./images/avatar.jpg" alt="">
+                <img :src="recommend.recommends[0].avatar" alt="">
               </div>
-              <div class="left_avatar_name">丁磊</div>
+              <div class="left_avatar_name">{{recommend.recommends[0].nickname}}</div>
             </div>
-            <div class="left_title">这款有机茶叶饮料，无糖不怕胖</div>
-            <div class="left_price">云萃龙井茶饮料限时69.8元一箱</div>
+            <div class="left_title">{{recommend.recommends[0].subtitle}}</div>
+            <div class="left_price">云萃龙井茶饮料限时{{recommend.recommends[0].priceInfo}}元一箱</div>
           </div>
           <div class="right">
-            <div class="right_title">
-              丁磊的好货推荐
+            <div class="right_title" v-if="recommend.recommends ? recommend.recommends[0].typeName : null">
+              {{recommend.recommends[0].typeName}}
             </div>
           </div>
         </div>
@@ -151,18 +144,18 @@
     <div class="clock">
       <div class="swiper2">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"  v-for="item in 3">
+          <div class="swiper-slide"  v-for="(tenfifteen,index) in tenfifteens" :key="index" v-if="index<3">
             <img src="./images/beijingtu.png" alt="">
             <div class="gray_inner">
               <div class="jinri">--今日话题--</div>
-              <div class="guanyu">关于单身</div>
-              <div class="liaoliao">聊聊单身的好处</div>
+              <div class="guanyu">{{tenfifteen.title}}</div>
+              <div class="liaoliao">{{tenfifteen.desc}}</div>
               <div class="canyu">
                 <div class="canyu_circle_first">
                   <img src="./images/huisetouxiang.png" alt="">
                 </div>
                 <div class="canyu_circle_avatar">
-                  <img src="./images/avatar.jpg" alt="">
+                  <img :src="tenfifteen.participantAvatar[0]" alt="">
                 </div>
                 <div class="canyu_circle_third">
                   <img src="./images/huisetouxiang.png" alt="">
@@ -173,7 +166,7 @@
                   <div class="small_point"></div>
                 </div>
                 <div class="canyu_circle">
-                  <span class="canyu_num">554</span>
+                  <span class="canyu_num">{{tenfifteen.participantNum}}</span>
                   <span class="canyu_text">人参与话题</span>
                 </div>
               </div>
@@ -187,26 +180,41 @@
 </template>
 
 <script>
+  import {mapState,mapActions} from 'vuex'
   import BScroll from 'better-scroll'
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
   export default {
+    computed:{
+      ...mapState(['banners','columns','recommend','tenfifteens'])
+    },
     mounted() {
-      new Swiper('.swiper0', {
-        loop: true,
-        slidesPerView: 'auto'
+
+      this.$nextTick(()=>{
+        new Swiper('.swiper0', {
+          loop: true,
+          slidesPerView: 'auto'
+        })
+        let swiper1 = new Swiper('.swiper1',{
+          slidesPerView: 3
+        });
+        let swiper2 = new Swiper('.swiper2',{
+          slidesPerView:1
+        });
+
       })
-      let swiper1 = new Swiper('.swiper1',{
-        slidesPerView: 4
-      });
-      let swiper2 = new Swiper('.swiper2',{
-        slidesPerView:1
-      });
+      this.getBanner()
+      this.getColumn()
+      this.getTenfifteens()
+      this.getRecommend()
+    },
+    methods:{
+      ...mapActions(['getBanner','getColumn','getTenfifteens','getRecommend'])
     }
   }
 </script>
 
-<style lang='less' rel="stylesheet/less" scoped="true">
+<style lang='less' rel="stylesheet/less" scoped>
   @import "../../assets/less/mixins";
   .yanxuan_wrapper{
     background: #fff;
@@ -253,6 +261,39 @@
         margin: 1.2rem;
         .swiper-slide{
           margin-top: 10px;
+          .swiper0_gray_inner{
+            background-color: rgba(255,255,255,.9);
+            width: 450/@rem;
+            height: 260/@rem;
+            margin-left: 70/@rem;
+            margin-top: 70/@rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 14px;
+            text-align: center;
+            .jinri{
+              width: 450/@rem;
+              height: 28/@rem;
+              font-size: 10px;
+              color:#7f7f7f;
+            }
+            .guanyu{
+              width: 450/@rem;
+              height: 43/@rem;
+              font-size:14px ;
+            }
+            .liaoliao{
+              width: 450/@rem;
+              height: 41/@rem;
+              font-size: 10px;
+            }
+          }
           &>img{
             width: 95%;
             height: 385/@rem;
@@ -269,11 +310,13 @@
         height: 226/@rem;
         background: #fff;
         .swiper-wrapper{
-          width: 690/@rem;
+          width: 120%;
           height: 226/@rem;
           .swiper-slide{
+
             width: 164/@rem;
             height: 164/@rem;
+            margin:0.5rem 0.2rem ;
             .small_tip{
               width: 150/@rem;
               height: 32/@rem;
@@ -604,7 +647,8 @@
       }*/
     }
     .biaoti_header{
-
+      /*background: #fff;*/
+        margin-top: 20px;
         width: 690/@rem;
         height: 120/@rem;
         display: flex;

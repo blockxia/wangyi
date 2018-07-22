@@ -7,7 +7,12 @@ import router from './router'
 import store from './store'
 import './mock/mockServer'
 import './fliter/fliter'
-//图片懒加载待？
+//图片懒加载
+import VueLazyLoad from 'vue-lazyload'
+import loading from '../static/images/loading.gif'
+Vue.use(VueLazyLoad,{
+  loading
+})
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

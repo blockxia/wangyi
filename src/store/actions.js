@@ -7,7 +7,11 @@ import {
   RECEIVE_POPULARITEMLISTS,
   RECEIVE_FLASHSALEINDEXVO,
   RECEIVE_TOPICLIST,
-  RECEIVE_CATELIST
+  RECEIVE_CATELIST,
+  RECEIVE_BANNER,
+  RECEIVE_COLUMN,
+  RECEIVE_RECOMMEND,
+  RECEIVE_TENFIFTEENS
 } from './mutation-types'
 import {
   reqMsite,
@@ -18,7 +22,11 @@ import {
   reqMsiteHot,
   reqMsiteXsg,
   reqMsiteZT,
-  reqMsiteJH
+  reqMsiteJH,
+  reqRealB,
+  reqRealC,
+  reqRealR,
+  reqRealS
 } from '../api'
 export default {
 
@@ -98,11 +106,47 @@ export default {
   },
   async getCateList ({commit}) {
     const result = await reqMsiteJH()
-    console.log('getCateList',result);
+   // console.log('getCateList',result);
     if (result.code === 0) {
       const cateList = result.data
-      console.log('getCateList');
+    //  console.log('getCateList');
       commit(RECEIVE_CATELIST, {cateList})
+    }
+  },
+  async getBanner ({commit}) {
+    const result = await reqRealB()
+    //console.log('getBanner',result);
+    if (result.code === 0) {
+      const banners = result.data
+     // console.log('getBanner');
+      commit(RECEIVE_BANNER, {banners})
+    }
+  },
+  async getColumn ({commit}) {
+    const result = await reqRealC()
+    //console.log('getColumn',result);
+    if (result.code === 0) {
+      const columns = result.data
+     // console.log('getColumn');
+      commit(RECEIVE_COLUMN, {columns})
+    }
+  },
+  async getRecommend ({commit}) {
+    const result = await reqRealR()
+    console.log('getRecommend',result);
+    if (result.code === 0) {
+      const recommend = result.data
+     console.log('getRecommend');
+      commit(RECEIVE_RECOMMEND, {recommend})
+    }
+  },
+  async getTenfifteens ({commit}) {
+    const result = await reqRealS()
+    console.log('getTenfifteens',result);
+    if (result.code === 0) {
+      const tenfifteens = result.data
+     console.log('getTenfifteens');
+      commit(RECEIVE_TENFIFTEENS, {tenfifteens})
     }
   },
 

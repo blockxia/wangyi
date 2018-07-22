@@ -7,3 +7,8 @@ export const RECEIVE_POPULARITEMLISTS='receive_popularitemlists'//接收人气�
 export const RECEIVE_FLASHSALEINDEXVO='receive_flashsaleindexvo'//接收限时购
 export const RECEIVE_TOPICLIST='receive_topiclist'//接收专题精选
 export const RECEIVE_CATELIST='receive_catelist'//接收专题精选
+
+export const RECEIVE_BANNER='receive_banner'//接收实物banner
+export const RECEIVE_COLUMN='receive_column'//接收实物banner下面的channel
+export const RECEIVE_RECOMMEND='receive_recommend'//接收为你推荐
+export const RECEIVE_TENFIFTEENS='receive_tenfifteens'//接收十点一刻

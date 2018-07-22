@@ -7,5 +7,10 @@ export default {
   popularItemList: [],   //人气推荐
   flashSaleIndexVO:{},//严选限时购
   topicList:[],//专题精选
-  cateList:[]//居家好物
+  cateList:[],//居家好物
+  //实物页面数据
+  banners: [],    //识物banner
+  columns: [],   //banner下面的channel
+  recommend: {},   //为你推荐
+  tenfifteens: [],    //十点一刻
 }
