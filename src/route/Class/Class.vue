@@ -25,13 +25,14 @@
   export default {
     data(){
       return{
-        currentIndex:0
+        currentIndex:0,
       }
     },
-    mounted(){
-      this.$store.dispatch('getCategorys',()=>{
+    computed:{
 
-      })
+    },
+    mounted(){
+
     },
     methods:{
 

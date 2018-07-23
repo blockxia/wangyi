@@ -8,7 +8,7 @@ import Shopping from '../route/Shopping/Shopping.vue'
 import Profile from '../route/Profile/Profile.vue'
 import Recommend from '../route/Recommend/Recommend.vue'
 import AtHome from '../route/AtHome/AtHome.vue'
-//import Cate from '../route/Cate/Cate.vue'
+import PhoneLogin from '../route/PhoneLogin/PhoneLogin.vue'
 import Login from '../route/Login/Login.vue'
 import Register from '../route/Register/Register.vue'
 
@@ -84,6 +84,10 @@ export default new Router({
     {
       path: '/register',
       component:Register,
+    },
+    {
+      path: '/phonelogin',
+      component:PhoneLogin,
     },
     {
       path: '/profile',

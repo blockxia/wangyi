@@ -22,32 +22,74 @@
       </div>
       <div class="center">
         <div class="btn_wrap">
-          <div class="btn_phone" @click="">
-
+          <div class="input_emil">
+            <input type="text"  class="emil_phone"
+             placeholder="邮箱账号" v-model="emil">
+          </div>
+          <div class="input_pwd">
+            <input type="password" maxlength="6" class="emil_pwd"
+                   placeholder="密码" v-model="pwd">
+          </div>
+          <div class="register_phone">
+            <div class="text" @click="$router.push('/register')">
+              <span class="register">注册账号</span>
+            </div>
+            <div class="pwd">
+              <span class="register">忘记密码</span>
+            </div>
+          </div>
+          <div class="btn_phone"  @click="sendCode">
             <span>登录</span>
           </div>
-          <div class="btn_emil" @click="$router.replace('/login')">
+          <div class="btn_emil" @click="$router.push('/phonelogin')">
 
             <span>其他登录方式</span>
           </div>
-          <div class="text_register" @click="$router.replace('/register')">
+          <!--<div class="text_register" @click="$router.replace('/register')">
             <span>注册账号</span>
             <i class="iconfont icon-jiantouyou"></i>
-          </div>
-
+          </div>-->
         </div>
       </div>
-      <div class="down">
+      <!--<div class="down">
         <div class="wrap">
 
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+    data(){
+      return{
+        emil:'',
+        pwd:''
+      }
+    },
+    computed:{
+      isEmil(){
+        return /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(this.emil)
+      }
+    },
+    methods:{
+      //v-if="isShow"
+      sendCode(){
+        const {emil,pwd}=this
+
+        if(this.isEmil && !pwd){
+          alert('请输入密码 ')
+
+        }else if(!this.isEmil || !pwd){
+          alert('邮箱或密码输入错误')
+        }else{
+          alert('登录成功')
+        }
+
+      }
+    }
+  }
 </script>
 
 <style lang='less' rel="stylesheet/less" scoped="true">
@@ -90,6 +132,7 @@
       .img_wrap{
         width: 268/@rem;
         height:90/@rem;
+        margin-top: -20%;
         img{
           width: 100%;
           height: 100%;
@@ -111,6 +154,58 @@
         text-align: center;
         line-height:74/@rem;
         font-size: 14px;
+        .input_emil{
+          width: 670/@rem;
+          height:91/@rem;
+          box-sizing: border-box;
+          margin: 0 -5%;
+        //  background:lightpink ;
+          margin-bottom: 1%;
+            .emil_phone{
+              box-sizing: border-box;
+              width: 100%;
+              height:100%;
+              padding-left: 5%;
+              outline: none;
+              border-bottom: 1px solid #eeeeee;
+            }
+        }
+        .input_pwd{
+          width: 670/@rem;
+          height:91/@rem;
+          box-sizing: border-box;
+          margin: 0 -5%;
+          //  background:lightpink ;
+          margin-bottom: 5%;
+          .emil_pwd{
+            box-sizing: border-box;
+            width: 100%;
+            height:100%;
+            padding-left: 5%;
+            outline: none;
+            border-bottom: 1px solid #eeeeee;
+          }
+        }
+        .register_phone{
+          width: 670/@rem;
+          height:91/@rem;
+          box-sizing: border-box;
+          //margin: 0 -5%;
+
+          margin-bottom: 6%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          line-height:91/@rem ;
+          padding: 1% 0;
+
+          .text{
+            height:91/@rem;
+          }
+          .pwd{
+            height:91/@rem;
+          }
+        }
         .btn_phone{
           width: 670/@rem;
           height:94/@rem;
@@ -124,13 +219,13 @@
           border: 1px solid #b4282d ;
           margin: 20px 0;
         }
-        .text_register{
+       /* .text_register{
           width: 670/@rem;
           height:40/@rem;
-        }
+        }*/
       }
     }
-    .down{
+   /* .down{
       width: 750/@rem;
       height:40/@rem;
       font-size: 14px;
@@ -156,7 +251,7 @@
         }
 
       }
-    }
+    }*/
   }
 }
 </style>

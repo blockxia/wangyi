@@ -11,12 +11,14 @@
 </template>
 
 <script>
+  import PubSub from 'pubsub-js'
   import BScroll from  'better-scroll'
   import {mapState} from 'vuex'
   export default {
     data(){
       return{
-        currentIndex:0
+        currentIndex:0,
+
       }
     },
     mounted(){
@@ -33,6 +35,8 @@
         const {path,index}=obj
         this.$router.push(path)
         this.currentIndex=index
+        PubSub.publish('navData',this.currentIndex)
+
       }
     },
     computed:{

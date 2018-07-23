@@ -22,7 +22,9 @@
       </div>
       <div class="center">
         <div class="btn_wrap">
-          <div class="btn_phone" @click="$router.replace('/login')">
+          <!-- @click="$router.replace('/login')"-->
+          <!--goto({path:'/login',index})-->
+          <div class="btn_phone"  @click="$router.replace('/phonelogin')">
             <i class="iconfont icon-shouji4"></i>
             <span>手机号码登录</span>
           </div>
@@ -58,7 +60,11 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    methods:{
+
+    }
+  }
 </script>
 
 <style lang='less' rel="stylesheet/less" scoped="true">
