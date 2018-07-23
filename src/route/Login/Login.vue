@@ -83,8 +83,10 @@
 
         }else if(!this.isEmil || !pwd){
           alert('邮箱或密码输入错误')
+        }else if(!this.isEmil){
+          alert('请输入邮箱和密码')
         }else{
-          alert('登录成功')
+          alert('登陆成功')
         }
 
       }

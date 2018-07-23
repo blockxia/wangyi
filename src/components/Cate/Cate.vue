@@ -71,8 +71,10 @@
   height:100%;
   box-sizing: border-box;
   padding: 30/@rem;
+  overflow: hidden;
   .list_wrapper{
     height: 90%;
+    overflow: hidden;
     .list_slide{
       height: 1215/@rem;
       .list_cover{

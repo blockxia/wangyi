@@ -12,7 +12,7 @@
       </div>
       <div class="nav_wrapper">
         <ul class="slide_nav">
-          <li class="slide_item" @click="goIn({path:'/msite/recommend',index})" :class="{active:$route.path ==='/msite/recommend' }">推荐</li>
+          <li class="slide_item" @click="goIn({path:'/msite/recommend',index:null})" :class="{active:$route.path ==='/msite/recommend'}" >推荐</li>
           <li class="slide_item" @click="goIn({path:'/msite/athome',index})" :class="{active: index===activeIndex }"
             v-for="(headCate,index) in headCateList" :key="index"
           >{{headCate.name}}</li>
@@ -34,6 +34,7 @@
 <script>
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
+  import PubSub from 'pubsub-js'
   export default {
     data () {
       return{
@@ -55,9 +56,12 @@
     },
     methods:{
       goIn(obj){
-        const {path,index}=obj
+        let {path,index}=obj
+
         this.$router.push(path)
+
         this.activeIndex =index
+        PubSub.publish('headerData',index)
       }
     },
   }

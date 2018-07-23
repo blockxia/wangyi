@@ -14,5 +14,6 @@ export default {
   recommend: {},   //为你推荐
   tenfifteens: [],    //十点一刻
   //分类页数据
-  categorys: []    //分类页数据
+  categorys: []  ,  //分类页数据
+
 }

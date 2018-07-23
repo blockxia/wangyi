@@ -1,5 +1,6 @@
 <template>
-  <div class="msite_content">
+  <!--id="#"-->
+  <div class="msite_content" id="#">
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="(item,index) in focusList"
@@ -107,12 +108,12 @@
         <div class="title">
           <span>严选限时购</span>
         </div>
-        <div class=" Countdown_time">
-          <span class="hour">10</span>
+        <div class=" Countdown_time" v-if="time._data">
+          <span class="hour" >{{time._data.hours}}</span>
           <span class="black">:</span>
-          <span class="min">01</span>
+          <span class="min" >{{time._data.minutes}}</span>
           <span class="black">:</span>
-          <span class="second">45</span>
+          <span class="second" >{{time._data.seconds}}</span>
         </div>
         <div class="predict_time">
           <span class="up_time">下一场</span>
@@ -134,6 +135,11 @@
       <div>
         <img src="./images/fuli.jpg" alt="">
       </div>
+    </div>
+    <div class="target" @click="target">
+      <a href="#">
+        <i class="iconfont icon-shouqijiantouxiao"></i>
+      </a>
     </div>
     <div class="zhuanti">
       <div class="zhuanti_title">
@@ -176,10 +182,19 @@
 
 <script>
   import {mapState,mapActions} from 'vuex'
+
   import BScroll from 'better-scroll'
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
+
+  import moment from 'moment'
+
   export default {
+    data(){
+      return{
+        time:{},
+      }
+    },
     computed:{
       ...mapState([
         'focusList',
@@ -222,16 +237,35 @@
       this.$store.dispatch('getNewItemList')
       this.$store.dispatch('getPopularItemLists')
       //this.$store.dispatch('getFlashSaleIndexVO')
-
-
-      this.getFlashSaleIndexVO()
+      this.$store.dispatch('getFlashSaleIndexVO',()=>{
+        this.$nextTick(()=>{
+          let time=moment.duration(this.flashSaleIndexVO.remainTime)
+          const timer=setInterval(()=>{
+            time-=1000
+            if(time<=0){
+              clearInterval(timer)
+            }
+            this.time=moment.duration(time)
+          },1000)
+        })
+      })
       this.getTopicList()
       this.getCateList()
+   /*  const scroll =new BScroll('#bar',{
+
+      }).scrollTo(100,500,1000,swipe)
+   */
+
+    },
+    destroyed(){
 
     },
     methods:{
       //映射函数多次复用较简单
-      ...mapActions(['getFlashSaleIndexVO','getTopicList','getCateList'])
+      ...mapActions(['getFlashSaleIndexVO','getTopicList','getCateList']),
+      target(){
+        scrollTo(100,500)
+      }
     }
   }
 </script>
@@ -521,6 +555,11 @@
           margin: 20px 0;
           color: white;
           font-size: 20px;
+          text-align: center;
+          margin-left: -40px;
+          &>span{
+            display: inline-block;
+          }
           .black{
             color: black;
           }
@@ -582,6 +621,19 @@
       }
 
     }
+    .target{
+      position: fixed;
+      z-index: 200;
+      right: 0;
+      bottom: 60px;
+      width: 60px;
+      height: 60px;
+     // background: pink;
+      .iconfont{
+        font-size: 60px;
+      }
+
+         }
     .fuli{
       width: 750/@rem;
       height: 300/@rem;

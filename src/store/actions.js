@@ -35,7 +35,7 @@ export default {
 
   async getHeadCateList({commit},cb){
     const result = await reqMsite()
-    //console.log(result);
+    console.log(result);
     if(result.code===0){
       const headCateList=result.data
      // console.log(headCateList);
@@ -88,13 +88,14 @@ export default {
       commit(RECEIVE_POPULARITEMLISTS, {popularItemList})
     }
   },
-  async getFlashSaleIndexVO ({commit}) {
+  async getFlashSaleIndexVO ({commit},cb) {
     const result = await reqMsiteXsg()
-   // console.log('getFlashSaleIndexVO',result);
+   //console.log('getFlashSaleIndexVO',result);
     if (result.code === 0) {
       const flashSaleIndexVO = result.data
      // console.log('getFlashSaleIndexVO');
       commit(RECEIVE_FLASHSALEINDEXVO, {flashSaleIndexVO})
+      cb && cb()
     }
   },
   async getTopicList ({commit}) {
