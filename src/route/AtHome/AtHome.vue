@@ -58,6 +58,7 @@
 
       })
     },
+    //消息订阅与发布需要在生命周期被销毁时取消订阅，避免重复订阅
     destroyed(){
       PubSub.unsubscribe('headerData')
     }

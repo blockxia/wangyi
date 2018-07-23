@@ -57,9 +57,7 @@
     methods:{
       goIn(obj){
         let {path,index}=obj
-
         this.$router.push(path)
-
         this.activeIndex =index
         PubSub.publish('headerData',index)
       }
