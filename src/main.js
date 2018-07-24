@@ -1,12 +1,12 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import './mock/mockServer'
 import './fliter/fliter'
+import './assets/reset.css'
 //图片懒加载
 import VueLazyLoad from 'vue-lazyload'
 import loading from '../static/images/loading.gif'

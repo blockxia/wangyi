@@ -241,6 +241,7 @@
       this.$store.dispatch('getFlashSaleIndexVO',()=>{
         this.$nextTick(()=>{
           let time=moment.duration(this.flashSaleIndexVO.remainTime)
+          console.log(time);
           const timer=setInterval(()=>{
             time-=1000
             if(time<=0){

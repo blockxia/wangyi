@@ -10,9 +10,7 @@
       <!--继续使用触屏版浏览>-->
       <!--<div>下载APP 立即领取</div>-->
      <!-- <img src="./images/bottom.jpg" alt="">-->
-      <router-link to="/msite" push >
-        <div class="first_bottom"> </div>
-      </router-link>
+    <div class="first_bottom" @click="$router.push('/msite')"> </div>
 
   </div>
 </template>
