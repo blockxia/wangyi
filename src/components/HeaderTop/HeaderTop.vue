@@ -10,10 +10,10 @@
           <span class="placeholder">搜索商品, 共10718款好物</span>
         </div>
       </div>
-      <div class="nav_wrapper">
+      <div class="nav_wrapper" ref="nav">
         <ul class="slide_nav">
-          <li class="slide_item" @click="goIn({path:'/msite/recommend',index:null})" :class="{active:$route.path ==='/msite/recommend'}" >推荐</li>
-          <li class="slide_item" @click="goIn({path:'/msite/athome',index})" :class="{active: index===activeIndex }"
+          <li class="slide_item" @click="goIn({path:'/msite/recommend',index:100})" :class="{active: 100==activeIndex}" >推荐</li>
+          <li class="slide_item" @click="goIn({path:'/msite/athome',index})" :class="{active: index==activeIndex }"
             v-for="(headCate,index) in headCateList" :key="index"
           >{{headCate.name}}</li>
         <!--  <li class="slide_item">鞋包配饰</li>
@@ -38,21 +38,42 @@
   export default {
     data () {
       return{
-        activeIndex:-1
+        activeIndex:-1,
+        scrollX: 0, // 滚动的y轴坐标
+        tops: [], // 所有li的top组成的数组
       }
     },
     computed:{
-      ...mapState(['headCateList'])
+      ...mapState(['headCateList']),
+   /*   active(){
+        const {scrollX,tops}=this
+        return tops.findIndex((top,index)=>{
+          return scrollX>=top&&scrollX<tops[index+1]
+        })
+      }*/
     },
     mounted(){
      this.$nextTick(()=>{
-       new BScroll('.nav_wrapper',{
+       this.navsScroll=new BScroll('.nav_wrapper',{
          probeType: 2,
          scrollX:true,
          click: true,
          eventPassthrough:'vertical'
        })
+     // this._initTops()
      })
+    },
+    updated(){
+      const index =this.activeIndex;
+      localStorage.setItem("setActiveId",index)
+    },
+    beforeMount(){
+      const nowIndex = localStorage.getItem("setActiveId")
+      this.activeIndex=parseInt(nowIndex)
+    },
+    destroyed(){
+      localStorage.setItem("setActiveId",100)
+     // localStorage.removeItem("setActiveId")
     },
     methods:{
       goIn(obj){
@@ -60,7 +81,24 @@
         this.$router.push(path)
         this.activeIndex =index
         PubSub.publish('headerData',index)
-      }
+
+      },
+   /*  _initTops(){
+        const tops=[]
+       const lis=this.$refs.navsUl.getElementsByClassName('slide_nav')
+       let top=0
+       tops.push(top)
+       Array.from(lis).forEach((li)=>{
+         top+=li.clientWidth
+         tops.push(top)
+       })
+       this.tops=tops
+      },
+      goIn(index){
+       const x=-this.tops[index]
+        this.scrollX=-x
+        this.navsScroll.scrollTo(x,0,500)
+      }*/
     },
   }
 </script>

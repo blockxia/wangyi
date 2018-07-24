@@ -3,7 +3,7 @@
   <div class="msite_content" id="#">
 
 
-    <div class="jujiahaowu" v-if="index===Index"  v-for="(cate,index) in headCateList" >
+    <div class="jujiahaowu" v-show="index==Index"  v-for="(cate,index) in headCateList" >
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -61,6 +61,16 @@
     //消息订阅与发布需要在生命周期被销毁时取消订阅，避免重复订阅
     destroyed(){
       PubSub.unsubscribe('headerData')
+
+
+    },
+    updated(){
+      const index =this.Index;
+      localStorage.setItem("setActiveId",index)
+    },
+    beforeMount(){
+      const nowIndex = localStorage.getItem("setActiveId")
+      this.Index=nowIndex
     }
 
   }

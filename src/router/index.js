@@ -18,7 +18,10 @@ export default new Router({
   routes: [
     {
       path: '/first',
-      component:FirstScreen
+      component:FirstScreen,
+     /* meta:{
+        showFooter:true
+      },*/
     },
     {
       path: '/msite',
@@ -59,16 +62,7 @@ export default new Router({
       component:Class,
       meta:{
         showFooter:true
-      },
-      // children:[
-      //   {
-      //     path: '/class/cate',
-      //     component:Cate,
-      //     meta:{
-      //       showFooter:true
-      //     }
-      //   }
-      // ]
+      }
     },
     {
       path: '/shopping',

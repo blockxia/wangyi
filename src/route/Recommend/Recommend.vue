@@ -1,6 +1,7 @@
 <template>
   <!--id="#"-->
-  <div class="msite_content" id="#">
+  <keep-alive>
+    <div class="msite_content" id="#">
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="(item,index) in focusList"
@@ -177,7 +178,7 @@
       </div>
     </div>
   </div>
-
+  </keep-alive>
 </template>
 
 <script>
