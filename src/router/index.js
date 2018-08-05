@@ -13,7 +13,6 @@ import Login from '../route/Login/Login.vue'
 import Register from '../route/Register/Register.vue'
 
 Vue.use(Router)
-
 export default new Router({
 	mode:"history",
   routes: [
